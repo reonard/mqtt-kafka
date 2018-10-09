@@ -26,11 +26,11 @@ func main() {
 	//mqtt.DEBUG = log.New(os.Stdout,"[DEBUG]",log.Llongfile)
 
 	channel = make(chan [2]string)
-	kafkaBroker := []string{"120.77.245.156:9092"}
+	kafkaBroker := []string{"x:x"}
 
 	cliOpt := mqtt.NewClientOptions()
 
-	cliOpt.AddBroker("tcp://120.77.245.156:1883").SetClientID("hjm_1538070622").SetUsername("HJM2")
+	cliOpt.AddBroker("tcp://x:x").SetClientID("hjm_1538070622").SetUsername("HJM2")
 
 	mqttCli := mqtt.NewClient(cliOpt)
 
