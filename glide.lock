@@ -1,0 +1,38 @@
+hash: 4e919457e81f307fd343fc9f380f56ae34bb673dded9842155b10e014c52f14f
+updated: 2018-10-02T00:48:58.506527+08:00
+imports:
+- name: github.com/DataDog/zstd
+  version: 940731c8fc259059120b0e617a69d54dcd7c3eee
+- name: github.com/davecgh/go-spew
+  version: d8f796af33cc11cb798c1aaeb27a4ebc5099927d
+  subpackages:
+  - spew
+- name: github.com/eapache/go-resiliency
+  version: ea41b0fad31007accc7f806884dcdf3da98b79ce
+  subpackages:
+  - breaker
+- name: github.com/eapache/go-xerial-snappy
+  version: 776d5712da21bc4762676d614db1d8a64f4238b0
+- name: github.com/eapache/queue
+  version: 093482f3f8ce946c05bcba64badd2c82369e084d
+- name: github.com/eclipse/paho.mqtt.golang
+  version: 36d01c2b4cbeb3d2a12063e4880ce30800af9560
+  subpackages:
+  - packets
+- name: github.com/golang/snappy
+  version: 2e65f85255dbc3072edf28d6b5b8efc472979f5a
+- name: github.com/pierrec/lz4
+  version: 1f6e18d34f6790fc0afea6f13a5fe3d9ab1770af
+  subpackages:
+  - internal/xxh32
+- name: github.com/rcrowley/go-metrics
+  version: e2704e165165ec55d062f5919b4b29494e9fa790
+- name: github.com/Shopify/sarama
+  version: ec843464b50d4c8b56403ec9d589cf41ea30e722
+- name: golang.org/x/net
+  version: 4dfa2610cdf3b287375bbba5b8f2a14d3b01d8de
+  subpackages:
+  - internal/socks
+  - proxy
+  - websocket
+testImports: []
