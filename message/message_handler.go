@@ -7,6 +7,14 @@ import (
 	"github.com/eclipse/paho.mqtt.golang"
 )
 
+const (
+	STATUS_NORMAL = iota
+	STATUS_WARN
+	STATUS_ALARM
+	STATUS_OFFLINE
+	STATUS_ERROR
+)
+
 var Channel chan [2]string
 var AsyncProducer sarama.AsyncProducer
 
@@ -56,5 +64,14 @@ func MessageHandler(client mqtt.Client, message mqtt.Message) {
 		Topic: "test",
 		Key:   sarama.StringEncoder("test"),
 		Value: sarama.StringEncoder(msg),
+	}
+
+	// 如果设备告警，写多一份入alarm队列
+	if dMsg.DeviceStatus == STATUS_ALARM {
+		AsyncProducer.Input() <- &sarama.ProducerMessage{
+			Topic: "alarm",
+			Key:   sarama.StringEncoder("test"),
+			Value: sarama.StringEncoder(msg),
+		}
 	}
 }
