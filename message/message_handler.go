@@ -67,7 +67,7 @@ func MessageHandler(client mqtt.Client, message mqtt.Message) {
 	}
 
 	// 如果设备告警，写多一份入alarm队列
-	if dMsg.DeviceStatus == STATUS_ALARM {
+	if dMsg.DeviceStatus != STATUS_NORMAL {
 		AsyncProducer.Input() <- &sarama.ProducerMessage{
 			Topic: "alarm",
 			Key:   sarama.StringEncoder("test"),
