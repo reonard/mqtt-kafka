@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"github.com/Shopify/sarama"
 	"github.com/eclipse/paho.mqtt.golang"
+	"strconv"
+	"time"
 )
 
 const (
@@ -53,6 +55,9 @@ func MessageHandler(client mqtt.Client, message mqtt.Message) {
 		fmt.Printf("Invalid Device %d with secret %s", dMsg.DeviceID, dMsg.DeviceSecret)
 		return
 	}
+
+	// 使用服务器时间
+	dMsg.MsgTime = strconv.Itoa(int(time.Now().UnixNano() / 1000))
 
 	msg, err := dMsg.ToKafkaMsg()
 	if err != nil {
