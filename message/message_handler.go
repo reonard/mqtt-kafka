@@ -57,7 +57,7 @@ func MessageHandler(client mqtt.Client, message mqtt.Message) {
 	}
 
 	// 使用服务器时间
-	dMsg.MsgTime = strconv.Itoa(int(time.Now().UnixNano() / 1000))
+	dMsg.MsgTime = strconv.Itoa(int(time.Now().UnixNano() / 1000000))
 
 	msg, err := dMsg.ToKafkaMsg()
 	if err != nil {
