@@ -17,7 +17,7 @@ func main() {
 
 	cliOpt := mqtt.NewClientOptions()
 
-	cliOpt.AddBroker("tcp://x:x").SetClientID("hjm_1538070623").SetUsername("HJM3")
+	cliOpt.AddBroker("x:x").SetClientID("hjm_1538070623").SetUsername("HJM3")
 
 	mqttCli := mqtt.NewClient(cliOpt)
 
@@ -28,6 +28,11 @@ func main() {
 	message.AsyncProducer = producer.NewAsyncProducer(kafkaBroker)
 
 	if token := mqttCli.Subscribe("go-mqtt/sample", 0, message.MessageHandler); token.Wait() && token.Error() != nil {
+		fmt.Println(token.Error())
+		os.Exit(1)
+	}
+
+	if token := mqttCli.Subscribe("action/result", 0, message.ActionMessageHandler); token.Wait() && token.Error() != nil {
 		fmt.Println(token.Error())
 		os.Exit(1)
 	}
